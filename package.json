@@ -1,12 +1,12 @@
 {
   "name": "use-state-persistent",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "A persistent version of useState Hook with LocalStorage.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "eslint . --ext .ts && tsc",
+    "build": "tsc",
     "lint": "eslint . --ext .ts"
   },
   "keywords": [
