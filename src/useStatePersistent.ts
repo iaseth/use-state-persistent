@@ -3,7 +3,7 @@ import React from "react";
 
 
 
-export const useStatePersistent = <MyType>(key: string, intial: MyType): [MyType, (v: MyType) => void] => {
+export const useStatePersistent = <MyType>(intial: MyType, key: string): [MyType, (v: MyType) => void] => {
 	const [value, setValue] = React.useState(getFromLocalStorage(key, intial));
 
 	const setValueLS = (v: MyType) => {
