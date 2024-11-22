@@ -84,7 +84,7 @@ export default useStatePersistent;
 | -------------- | ----------------------------------------------------------- |
 | `Name`         | `use-state-persistent`                                      |
 | `Description`  | `A persistent version of useState Hook using LocalStorage.` |
-| `Version`      | `1.1.0`                                                     |
+| `Version`      | `1.2.0`                                                     |
 | `Author`       | `iaseth`                                                    |
 | `Homepage`     | `https://github.com/iaseth/use-state-persistent`            |
 | `Repository`   | `iaseth/use-state-persistent`                               |
