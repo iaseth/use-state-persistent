@@ -38,20 +38,40 @@ You can view the source file [here](https://github.com/iaseth/use-state-persiste
 
 ## Source Code
 ```ts
-import { LS, getFromLocalStorage } from "./helpers";
 import React from "react";
 
 
 
-export const useStatePersistent = <MyType>(intial: MyType, key: string): [MyType, (v: MyType) => void] => {
-	const [value, setValue] = React.useState(getFromLocalStorage(key, intial));
+export const useStatePersistent = <StateType>(initialValue: StateType, key: string): [
+	StateType,
+	(v: StateType | ((v: StateType) => StateType)) => void
+] => {
+	// Get the stored value or fallback to the initial value
+	const [storedValue, setStoredValue] = React.useState(() => {
+		try {
+			const item = window.localStorage.getItem(key);
+			return item ? JSON.parse(item) : initialValue;
+		} catch (error) {
+			return initialValue;
+		}
+	});
 
-	const setValueLS = (v: MyType) => {
-		setValue(v);
-		LS.setItem(key, JSON.stringify(v));
+	const setStoredValueLS = (value: StateType | ((v: StateType) => StateType)) => {
+		try {
+			// If value is a function (updater form)
+			const valueToStore = value instanceof Function ? value(storedValue) : value;
+
+			// Update state
+			setStoredValue(valueToStore);
+
+			// Save to localStorage
+			window.localStorage.setItem(key, JSON.stringify(valueToStore));
+		} catch (error) {
+			console.error("Error setting localStorage", error);
+		}
 	};
 
-	return [value, setValueLS];
+	return [storedValue, setStoredValueLS];
 };
 
 export default useStatePersistent;
@@ -60,16 +80,16 @@ export default useStatePersistent;
 
 
 ## Package details
-| `Name`         | `Value`                                                    |
-| -------------- | ---------------------------------------------------------- |
-| `Name`         | `use-state-persistent`                                     |
-| `Description`  | `A persistent version of useState Hook with LocalStorage.` |
-| `Version`      | `1.0.0`                                                    |
-| `Author`       | `iaseth`                                                   |
-| `Homepage`     | `https://github.com/iaseth/use-state-persistent`           |
-| `Repository`   | `iaseth/use-state-persistent`                              |
-| `License`      | `MIT`                                                      |
-| `Dependencies` | `2`                                                        |
+| `Name`         | `Value`                                                     |
+| -------------- | ----------------------------------------------------------- |
+| `Name`         | `use-state-persistent`                                      |
+| `Description`  | `A persistent version of useState Hook using LocalStorage.` |
+| `Version`      | `1.1.0`                                                     |
+| `Author`       | `iaseth`                                                    |
+| `Homepage`     | `https://github.com/iaseth/use-state-persistent`            |
+| `Repository`   | `iaseth/use-state-persistent`                               |
+| `License`      | `MIT`                                                       |
+| `Dependencies` | `2`                                                         |
 
 
 
