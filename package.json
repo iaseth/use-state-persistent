@@ -1,7 +1,7 @@
 {
   "name": "use-state-persistent",
   "version": "1.0.0",
-  "description": "A persistent version of useState Hook with LocalStorage.",
+  "description": "A persistent version of useState Hook using LocalStorage.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
