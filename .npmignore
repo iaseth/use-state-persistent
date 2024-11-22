@@ -7,7 +7,7 @@ templates/
 
 generate.py
 hooklist.txt
-PREADME.md
+README.md.rx
 Makefile
 
 hooks.min.json
