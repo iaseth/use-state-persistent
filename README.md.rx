@@ -1,0 +1,60 @@
+
+# use-state-persistent
+`useStatePersistent` is a custom React hook that
+adds **persistence** to the standard `useState` hook
+using the **LocalStorage** in the web browser.
+
+#### Installation
+
+=> npm install use-state-persistent
+
+#### Import
+
+```ts
+import { useStatePersistent } from 'use-state-persistent';
+```
+
+#### Usage
+The usage syntax is similar to `useState` except for the extra `key` argument.
+Here, `0` is the **initial value** for `x` and `'my-key-for-x'` is the
+**unique key** using which `x` will be saved in **LocalStorage**.
+
+```ts
+const [x, setX] = useStatePersistent(0, 'my-key-for-x');
+```
+
+`useStatePersistent` will check if there already exists a value for
+`my-key-for-x` in the **LocalStorage** and will return it if it exists.
+Otherwise the `initial` value will be returned.
+
+Thereafter, every subsequent call to `setX` will save the new value to the **LocalStorage**.
+
+
+I am using {{ gh.link("iaseth/readmix", "readmix") }} for generating this README.
+You can view the source file [here](https://github.com/iaseth/use-state-persistent/blob/master/README.md.rx).
+
+
+## Source Code
+```ts
+{{ "src/useStatePersistent.ts" | File }}
+```
+
+
+## Package details
+{{ npm.packageDetails() }}
+
+
+## Dependencies
+{{ npm.dependencyTable() }}
+
+
+## Dev dependencies
+{{ npm.devDependencyTable() }}
+
+
+## License
+{{ "LICENSE.md" | File }}
+
+
+{{ giveCredit() }}
+
