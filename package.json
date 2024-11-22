@@ -2,11 +2,27 @@
   "name": "use-state-persistent",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "eslint . --ext .ts && tsc",
+    "lint": "eslint . --ext .ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "react",
+    "hooks",
+    "javascript"
+  ],
+  "author": "iaseth",
+  "homepage": "https://github.com/iaseth/use-state-persistent",
+  "repository": "iaseth/use-state-persistent",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.15.0"
+  }
 }
